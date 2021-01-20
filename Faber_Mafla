@@ -1,0 +1,61 @@
+{
+  {170,67},
+  {180,80},
+  {170,65},
+  {178,75},
+  {160,55},
+  {163,60},
+  {165,63},
+  {170,70},
+  {164,62},
+  {176,77},
+  {164,60},
+  {170,76},
+  {170,56},
+  {168,60}
+};
+int col = 0; // columnas
+int fil = 0; // filas
+int x = 0; // suma en x
+flotar y = 0; // suma en y
+flotar xy = 0; // sumatoria de xyy
+long int x2 = 0; 
+long int x_2 = 0; 
+número flotante = 0;
+den flotante = 0;
+int m = 14; // matriz
+flotar o; // ordenada
+String dato;
+flotar a;
+peso flotante;
+int estatura; 
+configuración vacía () {
+  Serial.begin (9600);
+  pinMode (2, ENTRADA); // Entrada de datos
+  pinMode (3, SALIDA); // Salida
+ para (; fil <m; fil ++) {
+  x = x + matriz [fil] [0];
+  y = y + log (matriz [fil] [1]);
+  xy = xy + (matriz [fil] [0] * log (matriz [fil] [1]));
+  x2 = x2 + pow (matriz [fil] [0], 2);
+ }
+ x_2 = pow (x, 2);
+ num = flotar (m * xy) -float (x * y);
+ den = m * x2-x_2;
+ o = flotante (num / den);
+ flotar my1 = y / m;
+ flotar mx = x / m;
+ flotar omx = o * mx;
+ flotar a1 = my1-omx;
+ a = exp (a1);
+ Serial.println ("Ingresar Estatura:");
+}
+bucle vacío () {
+ if (Serial.available ()> 0) {
+  dato = Serial.readString ();
+  estatura = dato.toInt ();
+  peso = a * exp (o * estatura);
+  Serial.println (String ("Su peso es:") + String (peso) + String ("Kg"));
+  Serial.println ("Ingresar Estatura");
+ }
+}
